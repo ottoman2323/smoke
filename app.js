@@ -44,7 +44,6 @@ app.use(express.urlencoded({extended:false}))
 app.use(express.static(join(__dirname, 'public')))
 
 app.use((req, res, next)=>{
-   req.session.userID = "66393fb9df70becb16b560c8";
    const {userID} = req.session 
 
    if(userID){
