@@ -18,37 +18,37 @@
       <form id="editForm">
          <div class="formData">
             <div class="side">
-               <div class="area">
+               <div class="area editParents">
                   <input type="text" value="{{data.name}}" name="name">
                   <span>Όνομα</span>
                </div>
 
-               <div class="area">
+               <div class="area editParents">
                   <input type="text" value="{{data.lastName}}" name="lastName">
                   <span>Επώνυμο</span>
                </div>
 
-               <div class="area">
+               <div class="area editParents">
                   <input type="email" value="{{data.email}}" name="email">
                   <span>E-mail</span>
                </div>
 
-               <div class="area">
+               <div class="area editParents">
                   <input type="text" value="{{data.phone}}" name="phone">
                   <span>Τηλέφωνο</span>
                </div>
 
-               <div class="area">
+               <div class="area editParents">
                   <input type="text" value="{{data.taxNO}}" name="taxNO">
                   <span>Α.Φ.Μ</span>
                </div>
 
-               <div class="area">
+               <div class="area editParents">
                   <input type="text" value="{{data.idNO}}" name="idNO">
                   <span>Α.Δ.Τ</span>
                </div>
 
-               <div class="area">
+               <div class="area editParents">
                   <input type="text" value="{{data.IBAN}}" name="IBAN">
                   <span>IBAN</span>
                </div>
@@ -56,22 +56,22 @@
 
 
             <div class="side">
-               <div class="area">
+               <div class="area editParents">
                   <input type="text" value="{{data.fatherName}}" name="fatherName">
                   <span>Όνομα Πατέρα</span>
                </div>
 
-               <div class="area">
+               <div class="area editParents">
                   <input type="text" value="{{data.motherName}}" name="motherName">
                   <span>Όνομα Μητέρας</span>
                </div>
 
-               <div class="area">
+               <div class="area editParents">
                   <input type="date" value="{{data.birthDay}}" name="birthDay">
                   <span>Ημερομηνία Γέννησης</span>
                </div>
 
-               <div class="area">
+               <div class="area editParents">
                   <input type="text" value="{{data.address}}" name="address">
                   <span>Διεύθυνση</span>
                </div>
@@ -95,7 +95,7 @@
                   </select>
                </div>
 
-               <div class="area">
+               <div class="area editParents">
                   <input type="text" value="{{data.postCode}}" name="postCode">
                   <span>Τ.Κ</span>
                </div>
@@ -121,7 +121,7 @@
 
 
 <script type="module">
-   import { clearMessage, timingReload } from '/js/allFunctions.js'
+   import { clearMessage, timingReload, inputColor } from '/js/allFunctions.js'
    const editForm = document.getElementById('editForm')
    const editMessage = document.getElementById('editMessage')
    const deleteButton = document.getElementById('deleteButton');
@@ -144,7 +144,9 @@
             if (res.state) {
                editMessage.style.color = '#8DECB4'
                editMessage.innerHTML = res.message
-               timingReload(3);
+               setTimeout(()=>{
+                  window.location.href = '/';
+               }, 1000)
             }
             else {
                editMessage.style.color = '#FA7070'

@@ -20,37 +20,37 @@
       <form id="addForm">
          <div class="formData">
             <div class="side">
-               <div class="area">
+               <div class="area editParents">
                   <input type="text"  name="name">
                   <span>Όνομα</span>
                </div>
 
-               <div class="area">
+               <div class="area editParents">
                   <input type="text"  name="lastName">
                   <span>Επώνυμο</span>
                </div>
 
-               <div class="area">
+               <div class="area editParents">
                   <input type="email" name="email">
                   <span>E-mail</span>
                </div>
 
-               <div class="area">
+               <div class="area editParents">
                   <input type="text"  name="phone">
                   <span>Τηλέφωνο</span>
                </div>
 
-               <div class="area">
+               <div class="area editParents">
                   <input type="text"  name="taxNO">
                   <span>Α.Φ.Μ</span>
                </div>
 
-               <div class="area">
+               <div class="area editParents">
                   <input type="text"  name="idNO">
                   <span>Α.Δ.Τ</span>
                </div>
 
-               <div class="area">
+               <div class="area editParents">
                   <input type="text"  name="IBAN">
                   <span>IBAN</span>
                </div>
@@ -58,22 +58,22 @@
 
 
             <div class="side">
-               <div class="area">
+               <div class="area editParents">
                   <input type="text"  name="fatherName">
                   <span>Όνομα Πατέρα</span>
                </div>
 
-               <div class="area">
+               <div class="area editParents">
                   <input type="text"  name="motherName">
                   <span>Όνομα Μητέρας</span>
                </div>
 
-               <div class="area">
+               <div class="area editParents">
                   <input type="date"  name="birthDay">
                   <span>Ημερομηνία Γέννησης</span>
                </div>
 
-               <div class="area">
+               <div class="area editParents">
                   <input type="text"  name="address">
                   <span>Διεύθυνση</span>
                </div>
@@ -97,7 +97,7 @@
                   </select>
                </div>
 
-               <div class="area">
+               <div class="area editParents">
                   <input type="text"  name="postCode">
                   <span>Τ.Κ</span>
                </div>
@@ -123,12 +123,19 @@
 
 
 <script type="module">
-   import {clearMessage, timingReload} from '/js/allFunctions.js'
+   import {clearMessage, timingReload, inputColor} from '/js/allFunctions.js'
    const addForm = document.getElementById('addForm')
    const addMessage = document.getElementById('addMessage')
+   const editParents = document.querySelectorAll('.editParents');
 
    addForm.addEventListener('submit', (event) => {
       event.preventDefault()
+
+      editParents.forEach((parent)=>{
+         let input = parent.firstElementChild;
+         let span = parent.lastElementChild;
+         inputColor(parent, input, span);
+      })
 
       const formData = new FormData(event.target)
       addMessage.innerHTML = ''
